@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react'
 import BookCard from './bookcard'
 
 const SearchResults = () => {
+    //sjekker at James Bond er det første som kommer opp når siden lastes.
     const [searchTerm, setSearchTerm] = useState('James Bond')
     const [searchResults, setSearchResults] = useState([])
 
     const handleSearch = async () => {
-        // Sjekk om søketermen har minst tre tegn før du utfører søket
+        // sjekker søket om det er over 3 tegn.
         if (searchTerm.length < 3) {
             console.log("Søket må inneholde minst tre tegn");
             return
         }
     
         try {
-            const response = await fetch(`https://openlibrary.org/search.json?q=${searchTerm}`)
-            const data = await response.json();
-            setSearchResults(data.docs);
+            //her hentes api'et inn og begrenses til 20 treff slik at det ikke tar så lang tid å laste inn data.
+            const response = await fetch(`https://openlibrary.org/search.json?q=${searchTerm}&limit=20`)
+            const data = await response.json()
+            setSearchResults(data.docs)
         } catch (error) {
             console.error('Error fetching search results:', error)
         }
@@ -23,27 +25,23 @@ const SearchResults = () => {
     
 
     useEffect(() => {
-        handleSearch(); // Utfør søk når komponenten lastes inn første gang
-    }, []); // Tom avhengighetsliste for å kjøre effekten kun en gang
+        // Søker så fort komponetene lastes inn.
+        handleSearch() 
+    }, []) 
 
     return (
-        <div>
-            <h2>Search for Books</h2>
-            <input
-                type="text"
-                placeholder="Enter search term"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
+        <div id="search">
+            <h2>We got books</h2>
+            <p>It might take a second for the search to load</p>
+            <input id="input"type="text"placeholder="Enter search here"
+            value={searchTerm}onChange={(e) => setSearchTerm(e.target.value)}/>
             <button onClick={handleSearch}>Search</button>
             
-            <div>
                 {searchResults.map((book, index) => (
                     <BookCard key={index} book={book} />
                 ))}
-            </div>
         </div>
-    );
-};
+    )
+}
 
 export default SearchResults

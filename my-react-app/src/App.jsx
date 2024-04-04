@@ -1,7 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchResults from './components/searchresults';
-import BookCard from './components/bookcard';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import SearchResults from './components/searchresults'
+import BookCard from './components/bookcard'
+
 
 const App = () => {
     return (
@@ -11,7 +12,7 @@ const App = () => {
                 <Route path="/book/:id" element={<BookCard />} />
             </Routes>
         </Router>
-    );
-};
+    )
+}
 
-export default App;
+export default App

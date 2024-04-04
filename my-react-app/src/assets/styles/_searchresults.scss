@@ -1,0 +1,30 @@
+// her er css for searchresults
+#search{
+    text-align: center;
+
+    h2{
+        text-align: center;
+        margin-top: 4rem;
+    }
+    #input{
+        width: 300px;
+        padding: .7rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    button{
+        padding: .7rem;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: inherit;
+        background-color: rgb(201, 218, 167);
+        cursor: pointer;
+        transition: border-color 0.25s;
+    }
+    button:hover {
+        background-color: #646cff;
+        padding: 0.9rem;
+      }
+}

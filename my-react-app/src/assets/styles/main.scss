@@ -1,0 +1,18 @@
+@import 'searchresults';
+@import 'bookcard';
+
+body{
+    background-color: rgb(44, 44, 44);
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+
+    main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+
+
