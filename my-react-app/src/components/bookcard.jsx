@@ -15,7 +15,7 @@ const BookCard = ({ book }) => {
                 <p>Author: {book.author_name}</p>
                 <p>Published: {book.first_publish_year}</p>
                 <p>Average Rating: {book.ratings_average || 'N/A'}</p>
-                <button href={amazonUrl} >Search on Amazon</button>
+                <a id="amazon" href={amazonUrl} >Search on Amazon</a>
             </article>
         </main>
     )
